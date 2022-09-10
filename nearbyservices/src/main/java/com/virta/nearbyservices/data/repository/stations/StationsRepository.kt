@@ -4,7 +4,7 @@ import com.virta.nearbyservices.data.model.StationListModel
 import javax.inject.Inject
 
 class StationsRepository @Inject constructor(private val stationsDataSource: StationsDataSource) {
-    suspend fun getStations(): List<StationListModel> {
-        return stationsDataSource.getStations()
+    suspend fun getStations(params: Map<String, Double>): List<StationListModel> {
+        return stationsDataSource.getStations(params)
     }
 }

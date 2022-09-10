@@ -1,7 +1,6 @@
 package com.virta.nearbyservices.data.repository.stations
 
 import android.content.Context
-import android.nfc.Tag
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -11,6 +10,7 @@ import com.virta.nearbyservices.data.model.StationListModel
 import com.virta.nearbyservices.data.utils.EncryptedPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import java.util.concurrent.atomic.AtomicInteger
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,21 +23,22 @@ class StationsDataSource @Inject constructor(
         .create(StationsService::class.java)
     private var encryptedPreferences: EncryptedPreferences =
         EncryptedPreferences.getInstance(context)
+    private val count = AtomicInteger(0)
 
-    suspend fun getStations(): List<StationListModel> {
+    suspend fun getStations(params: Map<String, Double>): List<StationListModel> {
         try {
             val token = encryptedPreferences.getString(EncryptedPreferences.Keys.TOKEN)
-            val params = hashMapOf<String, Long>()
-//            params["latMin"] = 4.398458
-//            params["longMin"] = 14.398458
             val stationsResponse = stationsDataSource.getStations(
                 token = token,
                 options = params
             )
-            if (stationsResponse.isEmpty()) {
-                return parseJsonToMockData(context, STATIONS_JSON_FILENAME)
-            } else {
-                return stationsResponse
+
+            return stationsResponse.ifEmpty {
+                if (count.incrementAndGet() % 2 == 0) {
+                    parseJsonToMockData(context, STATIONS_JSON_FILENAME).reversed()
+                } else {
+                    parseJsonToMockData(context, STATIONS_JSON_FILENAME)
+                }
             }
         } catch (error: Throwable) {
             throw ResponseError("Error fetching events", error)

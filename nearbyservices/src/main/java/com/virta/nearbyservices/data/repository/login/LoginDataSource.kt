@@ -15,8 +15,7 @@ class LoginDataSource @Inject constructor(
     @ApplicationContext val context: Context
 ) {
 
-    private var loginService: LoginService =
-        RetrofitClient.retrofitAuth().create(LoginService::class.java)
+    private var loginService: LoginService = RetrofitClient.retrofitAuth().create(LoginService::class.java)
 
     // TODO: Is it ok to send Boolean back here or LiveData<Boolean>, study Transformation?
     suspend fun login(
@@ -39,7 +38,7 @@ class LoginDataSource @Inject constructor(
         // TODO: revoke authentication
     }
 
-    private fun storeToken(jsonResponse: JsonObject){
+    private fun storeToken(jsonResponse: JsonObject) {
         EncryptedPreferences.getInstance(context)
             .putString(EncryptedPreferences.Keys.TOKEN.name, jsonResponse.get(TOKEN_KEY).asString)
     }

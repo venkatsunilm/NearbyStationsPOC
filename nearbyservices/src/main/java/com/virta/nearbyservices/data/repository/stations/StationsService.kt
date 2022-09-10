@@ -6,16 +6,9 @@ import retrofit2.http.Header
 import retrofit2.http.QueryMap
 
 interface StationsService {
-
-    companion object{
-        private const val ACCEPT = "accept"
-        private const val AUTHORIZATION = "Authorization"
-    }
-
     @GET("stations")
     suspend fun getStations(
-        @Header(ACCEPT) accept: String = "application/json",
-        @Header(AUTHORIZATION) token: String,
-        @QueryMap options: Map<String, Long>
+        @Header("Authorization") token: String,
+        @QueryMap options: Map<String, Double>
     ): List<StationListModel>
 }

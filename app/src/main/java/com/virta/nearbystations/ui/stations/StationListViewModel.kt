@@ -8,6 +8,7 @@ import com.virta.nearbyservices.data.RepositoryManager
 import com.virta.nearbyservices.data.ResponseError
 import com.virta.nearbyservices.data.model.StationListModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +24,16 @@ class StationListViewModel @Inject constructor(
     fun getStations() {
         viewModelScope.launch {
             try {
-                _stations.value = repositoryManager.getStations()
+                for (i in 1..10) {
+//                    delay(0)
+                    val params = hashMapOf<String, Double>()
+                    params["latMin"] = 4.398458
+                    params["longMin"] = 14.398458
+                    params["latMax"] = 9.398458
+                    params["longMax"] = 19.398458
+
+                    _stations.value = repositoryManager.getStations(params)
+                }
             } catch (error: ResponseError) {
                 // TODO: Update the UI with the error message
                 // TODO: For now  the service is not available sending mock data back

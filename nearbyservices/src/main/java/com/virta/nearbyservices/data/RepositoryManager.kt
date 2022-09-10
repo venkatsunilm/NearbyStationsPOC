@@ -13,7 +13,7 @@ class RepositoryManager @Inject constructor(
         return loginRepository.login(username, password)
     }
 
-    override suspend fun getStations(): List<StationListModel> {
-        return stationsRepository.getStations()
+    override suspend fun getStations(params: Map<String, Double>): List<StationListModel> {
+        return stationsRepository.getStations(params)
     }
 }

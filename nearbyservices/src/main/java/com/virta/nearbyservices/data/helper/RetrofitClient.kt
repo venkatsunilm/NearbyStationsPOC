@@ -10,7 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
 
     // TODO: PASS THE BASE URL, ONCE READY
-     private const val BASE_URL = "https://xyz/v4/"
+//    private const val BASE_URL = "https://xyz/v4/"
+    private const val BASE_URL = "https://apitest.virta.fi/v4/"
 
     var gson = GsonBuilder()
         .setLenient()

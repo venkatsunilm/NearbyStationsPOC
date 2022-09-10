@@ -6,6 +6,6 @@ interface IRepositoryManager {
 
     suspend fun login(username: String, password: String): Boolean
 
-    suspend fun getStations(): List<StationListModel>
+    suspend fun getStations(params: Map<String, Double>): List<StationListModel>
 
 }
