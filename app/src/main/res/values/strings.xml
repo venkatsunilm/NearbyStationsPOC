@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NearbyStations</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="welcome_screen_text">WELCOME TO VIRTA</string>
+    <string name="subHeading">Bringing electric mobility \nto peoples daily lives</string>
+    <string name="sign_in_info">Please sign in or register</string>
+    <string name="go_to_sign_in">Login</string>
+    <string name="secure_sign_in_by">Sign in by third party</string>
+    <string name="or_view_the_nearby_stations">Or view the nearby stations</string>
+    <string name="register">Register</string>
+</resources>

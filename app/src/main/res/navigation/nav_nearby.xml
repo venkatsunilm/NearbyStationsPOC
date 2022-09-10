@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Navigation graph editor-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_digitalclinic"
+    app:startDestination="@id/welcome_dest">
+
+    <fragment
+        android:id="@+id/welcome_dest"
+        android:name="com.virta.nearbystations.ui.WelcomeFragment"
+        android:label="welcome page"
+        tools:layout="@layout/welcome_fragment">
+        <action
+            android:id="@+id/action_welcome_dest_to_loginFragment"
+            app:destination="@id/login_dest" />
+        <!--        // TODO: send args to other fragment, under implementation-->
+        <!--        <argument-->
+        <!--            android:name="flowStepNumber"-->
+        <!--            app:argType="integer"-->
+        <!--            android:defaultValue="1"/>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/login_dest"
+        android:name="com.virta.nearbystations.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_dest_to_stations_dest"
+            app:destination="@id/stations_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/stations_dest"
+        android:name="com.virta.nearbystations.ui.stations.StationListFragment"
+        android:label="StationListFragment" />
+
+</navigation>
