@@ -9,8 +9,8 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
-// TODO: Change this class and use Hilt for context
-class EncryptedPreferences() {
+// TODO: use Hilt for context once implemented
+class EncryptedPreferences(private val applicationContext: Context) {
     private val sharedPreferencesName = "com.fsecure.mycolorapp"
     private val sharedPreferenceObject = EncryptedSharedPreferences.create(
         applicationContext,
@@ -26,9 +26,9 @@ class EncryptedPreferences() {
         DATA_ID
     }
 
-    fun putString(key: String, text: String) {
+    fun putString(key: String, text: String): Boolean {
         with(sharedPreferencesEditor) {
-            putString(key, text).apply()
+            return putString(key, text).commit()
         }
     }
 
@@ -47,7 +47,6 @@ class EncryptedPreferences() {
 
     }
 
-    //    TODO: To clear the preferences on Logout
     fun clearPreference() {
         with(sharedPreferencesEditor) { clear().apply() }
         if (sharedPreferenceObject.contains(sharedPreferencesName)) {
@@ -58,14 +57,12 @@ class EncryptedPreferences() {
     companion object {
         private lateinit var masterKeyAlias: MasterKey
         private var encryptedPreferences: EncryptedPreferences? = null
-        private lateinit var applicationContext: Context
         fun getInstance(context: Context): EncryptedPreferences {
             if (encryptedPreferences == null) {
-                applicationContext = context
                 masterKeyAlias = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
                     .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                     .build()
-                encryptedPreferences = EncryptedPreferences()
+                encryptedPreferences = EncryptedPreferences(context)
             }
             return encryptedPreferences!!
         }

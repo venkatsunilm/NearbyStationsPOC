@@ -4,7 +4,9 @@ import com.virta.nearbyservices.data.model.StationListModel
 import com.virta.nearbyservices.data.repository.login.LoginRepository
 import com.virta.nearbyservices.data.repository.stations.StationsRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RepositoryManager @Inject constructor(
     private val loginRepository: LoginRepository,
     private val stationsRepository: StationsRepository

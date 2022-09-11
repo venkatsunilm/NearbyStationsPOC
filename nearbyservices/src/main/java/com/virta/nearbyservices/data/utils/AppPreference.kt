@@ -54,6 +54,7 @@ class AppPreference() {
         }
     }
 
+    // TODO: Rework on this once again once the Hilt provides and bind concepts are implemented
     companion object {
         private lateinit var masterKeyAlias: MasterKey
         private var appPreference: AppPreference? = null

@@ -19,8 +19,7 @@ class StationsDataSource @Inject constructor(
     @ApplicationContext val context: Context
 ) {
 
-    private var stationsDataSource: StationsService = RetrofitClient.retrofitAuth()
-        .create(StationsService::class.java)
+    private var stationsDataSource: StationsService = RetrofitClient().createService(StationsService::class.java)
     private var encryptedPreferences: EncryptedPreferences =
         EncryptedPreferences.getInstance(context)
     private val count = AtomicInteger(0)
@@ -51,10 +50,11 @@ class StationsDataSource @Inject constructor(
         val stationListType = object : TypeToken<List<StationListModel>>() {}.type
         val stationList: List<StationListModel> = gson.fromJson(jsonString, stationListType)
 
-        for (item in stationList) {
-            Log.d(TAG, item.name)
-            Log.d(TAG, item.evses.toString())
-        }
+        // TODO: Remove this
+//        for (item in stationList) {
+//            Log.d(TAG, item.name)
+//            Log.d(TAG, item.electricVehicleConnectors.toString())
+//        }
 
         return stationList
     }

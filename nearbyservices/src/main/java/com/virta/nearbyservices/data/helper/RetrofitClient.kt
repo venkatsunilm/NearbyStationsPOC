@@ -1,31 +1,32 @@
 package com.virta.nearbyservices.data.helper
 
 import com.google.gson.GsonBuilder
-import okhttp3.CacheControl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-object RetrofitClient {
+@Singleton
+class RetrofitClient {
 
     // TODO: PASS THE BASE URL, ONCE READY
 //    private const val BASE_URL = "https://xyz/v4/"
-    private const val BASE_URL = "https://apitest.virta.fi/v4/"
+    private val BASE_URL = "https://apitest.virta.fi/v4/"
 
-    var gson = GsonBuilder()
-        .setLenient()
-        .create()
+    private fun getRetrofit(): Retrofit {
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
 
-    fun retrofitAuth(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(createClientAuth())
+            .client(getHttpClient())
             .build()
     }
 
-    fun createClientAuth(): OkHttpClient{
+    private fun getHttpClient(): OkHttpClient {
         val httpLoggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient
@@ -33,6 +34,9 @@ object RetrofitClient {
             .retryOnConnectionFailure(true)
             .addInterceptor(httpLoggingInterceptor)
             .build()
+    }
 
+    fun <S> createService(serviceClass: Class<S>?): S {
+        return getRetrofit().create(serviceClass)
     }
 }
