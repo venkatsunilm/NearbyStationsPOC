@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.virta.nearbystations.databinding.StationListFragmentBinding
 import com.virta.nearbystations.ui.adapters.StationsAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -30,9 +29,19 @@ class StationListFragment : Fragment() {
         adapter = StationsAdapter(listOf())
         binding.stationList.adapter = adapter
 
-        stationListViewModel.getStations()
-        stationListViewModel.stations.observe(viewLifecycleOwner){
-            lifecycleScope.launch{
+        // TODO: google services Map listeners which gives data back
+        // TODO: for now mocking to test multiple requests
+        for (i in 1..50) {
+            val params = hashMapOf<String, Double>()
+            params["latMin"] = 4.398458 + i
+            params["longMin"] = 14.398458 + i
+            params["latMax"] = 9.398458 + i
+            params["longMax"] = 19.398458 + i
+            stationListViewModel.cancelRoutineJob()
+            stationListViewModel.getStations(params)
+        }
+        stationListViewModel.stations.observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
                 binding.stationList.adapter = StationsAdapter(it)
             }
 

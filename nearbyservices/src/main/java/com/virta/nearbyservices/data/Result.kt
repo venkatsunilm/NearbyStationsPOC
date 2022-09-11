@@ -1,9 +1,6 @@
 package com.virta.nearbyservices.data
 
-/**
- * A generic class that holds a value with its loading status.
- * @param <T>
- */
+// TODO: use this
 sealed class Result<out T : Any> {
 
     data class Success<out T : Any>(val data: T) : Result<T>()
@@ -16,5 +13,7 @@ sealed class Result<out T : Any> {
         }
     }
 }
+
 class ResponseError(message: String, cause: Throwable) : Throwable(message, cause)
 
+data class ResponseDataModel<T>(val isSuccess: Boolean?, val data: T?, val message: String?)

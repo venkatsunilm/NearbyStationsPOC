@@ -8,9 +8,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoginDataSource @Inject constructor() {
+class LoginDataSource @Inject constructor(
+    retrofitClient: RetrofitClient
+) {
 
-    private var loginService: LoginService = RetrofitClient().createService(LoginService::class.java)
+    private var loginService: LoginService = retrofitClient.createService(LoginService::class.java)
 
     // TODO: Is it ok to send Boolean back here or LiveData<Boolean>, study Transformation?
     suspend fun login(

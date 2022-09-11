@@ -16,10 +16,11 @@ import javax.inject.Singleton
 
 @Singleton
 class StationsDataSource @Inject constructor(
-    @ApplicationContext val context: Context
+    @ApplicationContext val context: Context,
+    retrofitClient: RetrofitClient
 ) {
 
-    private var stationsDataSource: StationsService = RetrofitClient().createService(StationsService::class.java)
+    private var stationsDataSource: StationsService = retrofitClient.createService(StationsService::class.java)
     private var encryptedPreferences: EncryptedPreferences =
         EncryptedPreferences.getInstance(context)
     private val count = AtomicInteger(0)
