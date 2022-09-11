@@ -5,7 +5,7 @@ import com.virta.nearbyservices.data.model.StationListModel
 
 class StationViewModel(item: StationListModel) : ViewModel() {
     val locationName = item.name
-    val distance = item.latitude.toString()
+    val distance = item.id.toString()
     val address = item.city
     val evses = item.electricVehicleConnectors
 }

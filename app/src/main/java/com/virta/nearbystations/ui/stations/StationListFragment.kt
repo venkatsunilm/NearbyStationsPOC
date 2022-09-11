@@ -30,13 +30,13 @@ class StationListFragment : Fragment() {
         binding.stationList.adapter = adapter
 
         // TODO: google services Map listeners which gives data back
-        // TODO: for now mocking to test multiple requests
-        for (i in 1..50) {
+        // TODO: for now mocking to test multiple requests which comes from a current location listener
+        for (i in 0..0) {
             val params = hashMapOf<String, Double>()
             params["latMin"] = 4.398458 + i
-            params["longMin"] = 14.398458 + i
-            params["latMax"] = 9.398458 + i
-            params["longMax"] = 19.398458 + i
+            params["longMin"] = 14.3984656 + i
+            params["latMax"] = 49.398458
+            params["longMax"] = 19.3984343
             stationListViewModel.cancelRoutineJob()
             stationListViewModel.getStations(params)
         }

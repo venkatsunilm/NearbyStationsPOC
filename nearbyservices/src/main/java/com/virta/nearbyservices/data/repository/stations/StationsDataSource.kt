@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import com.virta.nearbyservices.data.ResponseError
 import com.virta.nearbyservices.data.helper.RetrofitClient
 import com.virta.nearbyservices.data.model.StationListModel
+import com.virta.nearbyservices.data.utils.CoordinatesUtil
 import com.virta.nearbyservices.data.utils.EncryptedPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
@@ -33,11 +34,21 @@ class StationsDataSource @Inject constructor(
                 options = params
             )
 
+            val parsedMockData = parseJsonToMockData(context, STATIONS_JSON_FILENAME)
+            val resultSorted = parsedMockData.sortedBy {
+                CoordinatesUtil.distanceOther(
+                    params["latMax"] ?: 0.0,
+                    params["longMax"] ?: 0.0,
+                    it.latitude,
+                    it.longitude
+                )
+            }
+
             return stationsResponse.ifEmpty {
                 if (count.incrementAndGet() % 2 == 0) {
-                    parseJsonToMockData(context, STATIONS_JSON_FILENAME).reversed()
+                    resultSorted.reversed()
                 } else {
-                    parseJsonToMockData(context, STATIONS_JSON_FILENAME)
+                    resultSorted
                 }
             }
         } catch (error: Throwable) {
