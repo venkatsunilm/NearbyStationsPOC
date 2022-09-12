@@ -35,6 +35,11 @@ class StationsAdapter(
         fun updateBindValues(item: StationListModel) {
             with(binding) {
                 stationViewModel = StationViewModel(item)
+
+                // update the child recycler view
+                electricVehicleConnectors.apply {
+                    adapter = KwAdapter(item.electricVehicleConnectors)
+                }
                 executePendingBindings()
             }
         }

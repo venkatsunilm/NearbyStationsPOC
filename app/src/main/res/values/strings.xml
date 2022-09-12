@@ -16,4 +16,5 @@
     <string name="secure_sign_in_by">Sign in by third party</string>
     <string name="or_view_the_nearby_stations">Or view the nearby stations</string>
     <string name="register">Register</string>
+    <string name="kw">%1$s\nkw</string>
 </resources>

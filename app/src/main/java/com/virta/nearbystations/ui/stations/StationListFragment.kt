@@ -12,6 +12,7 @@ import com.virta.nearbystations.ui.adapters.StationsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class StationListFragment : Fragment() {
 
@@ -49,4 +50,5 @@ class StationListFragment : Fragment() {
 
         return binding.root
     }
+
 }

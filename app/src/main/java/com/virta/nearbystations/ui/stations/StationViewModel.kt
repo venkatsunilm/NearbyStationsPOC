@@ -7,5 +7,5 @@ class StationViewModel(item: StationListModel) : ViewModel() {
     val locationName = item.name
     val distance = item.id.toString()
     val address = item.city
-    val evses = item.electricVehicleConnectors
+    val electricVehicleConnectors = item.electricVehicleConnectors
 }
