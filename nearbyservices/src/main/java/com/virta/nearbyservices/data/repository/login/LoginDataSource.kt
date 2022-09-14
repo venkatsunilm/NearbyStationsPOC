@@ -8,11 +8,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoginDataSource @Inject constructor(
-    retrofitClient: RetrofitClient
-) {
+class LoginDataSource @Inject constructor() {
 
-    private var loginService: LoginService = retrofitClient.createService(LoginService::class.java)
+    private var loginService: LoginService = RetrofitClient.CreateService.create(LoginService::class.java)
 
     // TODO: Is it ok to send Boolean back here or LiveData<Boolean>, study Transformation?
     suspend fun login(
@@ -24,7 +22,7 @@ class LoginDataSource @Inject constructor(
             val tokenJsonResponse = loginService.login(
                 body = userCredentials
             )
-            return tokenJsonResponse.get(TOKEN_KEY).asString
+            tokenJsonResponse.get(TOKEN_KEY).asString
         } catch (e: Throwable) {
             throw ResponseError("login failure", e)
         }

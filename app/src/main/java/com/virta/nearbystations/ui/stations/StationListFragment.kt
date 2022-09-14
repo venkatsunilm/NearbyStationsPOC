@@ -30,22 +30,21 @@ class StationListFragment : Fragment() {
         adapter = StationsAdapter(listOf())
         binding.stationList.adapter = adapter
 
-        // TODO: google services Map listeners which gives data back
-        // TODO: for now mocking to test multiple requests which comes from a current location listener
-        for (i in 0..0) {
+        // Assuming multiple calls can trigger
+        repeat(50) {
             val params = hashMapOf<String, Double>()
-            params["latMin"] = 4.398458 + i
-            params["longMin"] = 14.3984656 + i
-            params["latMax"] = 49.398458
-            params["longMax"] = 19.3984343
+            params["latMin"] = 4.398458
+            params["longMin"] = 14.3984656
+            params["latMax"] = 61.44560
+            params["longMax"] = 23.84568
             stationListViewModel.cancelRoutineJob()
             stationListViewModel.getStations(params)
         }
-        stationListViewModel.stations.observe(viewLifecycleOwner) {
-            lifecycleScope.launch {
-                binding.stationList.adapter = StationsAdapter(it)
-            }
-
+        stationListViewModel.stations.observe(viewLifecycleOwner)
+        {
+//            lifecycleScope.launch {
+            binding.stationList.adapter = StationsAdapter(it)
+//            }
         }
 
         return binding.root

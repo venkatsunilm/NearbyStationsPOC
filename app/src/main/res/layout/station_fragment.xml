@@ -25,11 +25,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_name"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="@{stationViewModel.locationName}"
-                android:textAlignment="viewEnd"
                 android:hint="Location updating..."
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/address"
@@ -38,12 +39,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/distance"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
+                android:hint="Distance updating..."
+                android:maxLines="1"
                 android:text="@{stationViewModel.distance}"
                 android:textAlignment="viewEnd"
-                android:hint="Distance updating..."
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/location_name"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
@@ -56,7 +58,9 @@
                 android:text="@{stationViewModel.address}"
                 android:visibility="visible"
                 android:hint="Address updating..."
-                app:layout_constraintBottom_toTopOf="@+id/rvKw"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintBottom_toTopOf="@+id/electricVehicleConnectors"
                 app:layout_constraintStart_toStartOf="@+id/location_name"
                 app:layout_constraintTop_toBottomOf="@+id/location_name" />
 

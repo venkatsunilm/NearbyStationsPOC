@@ -3,15 +3,15 @@ package com.virta.nearbystations.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.virta.nearbyservices.data.model.StationListModel
+import com.virta.nearbyservices.data.model.StationModel
 import com.virta.nearbystations.R
-import com.virta.nearbystations.databinding.ItemKwBinding
+import com.virta.nearbystations.databinding.SingleUnitKwBinding
 
-class KwAdapter(private var electricVehicleconnectors: List<StationListModel.ElectricVehicleConnectors>) :
+class KwAdapter(private var electricVehicleConnectors: List<StationModel.ElectricVehicleConnectors>) :
     RecyclerView.Adapter<KwAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemKwBinding.inflate(
+            SingleUnitKwBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -20,16 +20,16 @@ class KwAdapter(private var electricVehicleconnectors: List<StationListModel.Ele
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = electricVehicleconnectors[position]
+        val item = electricVehicleConnectors[position]
         holder.updateBindValues(item)
     }
 
-    override fun getItemCount(): Int = electricVehicleconnectors.size
+    override fun getItemCount(): Int = electricVehicleConnectors.size
 
     inner class ViewHolder(
-        private val binding: ItemKwBinding
+        private val binding: SingleUnitKwBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun updateBindValues(item: StationListModel.ElectricVehicleConnectors) {
+        fun updateBindValues(item: StationModel.ElectricVehicleConnectors) {
             val chipName = binding.root.resources?.getString(R.string.kw)?.let {
                 String.format(it, item.connectors[0].maxKw.toString())
             }
@@ -37,6 +37,5 @@ class KwAdapter(private var electricVehicleconnectors: List<StationListModel.Ele
                 tvKW.text = chipName
             }
         }
-
     }
 }

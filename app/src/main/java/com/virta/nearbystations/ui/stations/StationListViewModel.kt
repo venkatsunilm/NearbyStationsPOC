@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.virta.nearbyservices.data.RepositoryManager
 import com.virta.nearbyservices.data.ResponseError
-import com.virta.nearbyservices.data.model.StationListModel
+import com.virta.nearbyservices.data.model.StationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +19,8 @@ class StationListViewModel @Inject constructor(
 
     private var stationsJob: Job? = null
 
-    private var _stations = MutableLiveData<List<StationListModel>>()
-    val stations: LiveData<List<StationListModel>>
+    private var _stations = MutableLiveData<List<StationModel>>()
+    val stations: LiveData<List<StationModel>>
         get() = _stations
 
     fun getStations(params: Map<String, Double>) {

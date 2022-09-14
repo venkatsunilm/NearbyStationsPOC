@@ -1,6 +1,6 @@
 package com.virta.nearbyservices.data
 
-import com.virta.nearbyservices.data.model.StationListModel
+import com.virta.nearbyservices.data.model.StationModel
 import com.virta.nearbyservices.data.repository.login.LoginRepository
 import com.virta.nearbyservices.data.repository.stations.StationsRepository
 import javax.inject.Inject
@@ -15,7 +15,7 @@ class RepositoryManager @Inject constructor(
         return loginRepository.login(username, password)
     }
 
-    override suspend fun getStations(params: Map<String, Double>): List<StationListModel> {
+    override suspend fun getStations(params: Map<String, Double>): List<StationModel> {
         return stationsRepository.getStations(params)
     }
 }
