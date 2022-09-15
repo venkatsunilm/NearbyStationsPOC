@@ -25,13 +25,11 @@ class LoginViewModel @Inject constructor(
         get() = _loggedUserStatus
 
     // TODO: Instead of Network result we can return UI custom data model from Repository
-    fun login(username: String, password: String) {
+    fun login(userName: String, password: String) {
         viewModelScope.launch {
-            // TODO: Remove the below line, its for mock testing
             _spinner.value = true
-            val userCred = UserCredentials()
             safeCall {
-                when (val result = repositoryManager.login(userCred.userName, userCred.password)) {
+                when (val result = repositoryManager.login(userName, password)) {
                     is NetworkResult.Success -> {
                         _loggedUserStatus.value = LoginResultStatus(result.data)
                     }
@@ -44,32 +42,4 @@ class LoginViewModel @Inject constructor(
             _spinner.value = false
         }
     }
-
-    fun isAuthenticated() {
-        repositoryManager.isUserAuthenticated()
-    }
-
-//    fun loginDataChanged(username: String, password: String) {
-//        if (!isUserNameValid(username)) {
-//            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
-//        } else if (!isPasswordValid(password)) {
-//            _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
-//        } else {
-//            _loginForm.value = LoginFormState(isDataValid = true)
-//        }
-//    }
-//
-//    // A placeholder username validation check
-//    private fun isUserNameValid(username: String): Boolean {
-//        return if (username.contains('@')) {
-//            Patterns.EMAIL_ADDRESS.matcher(username).matches()
-//        } else {
-//            username.isNotBlank()
-//        }
-//    }
-//
-//    // A placeholder password validation check
-//    private fun isPasswordValid(password: String): Boolean {
-//        return password.length > 5
-//    }
 }

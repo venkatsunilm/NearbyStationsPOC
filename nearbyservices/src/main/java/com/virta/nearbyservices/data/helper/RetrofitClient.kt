@@ -8,8 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient{
 
-    // TODO: PASS THE BASE URL, ONCE READY
-//    private const val BASE_URL = "https://xyz/v4/"
     private val BASE_URL = "https://apitest.virta.fi/v4/"
 
     private fun getRetrofit(): Retrofit {

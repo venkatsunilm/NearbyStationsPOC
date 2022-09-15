@@ -13,5 +13,4 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_nearby" />
 
-    <!--    TODO: Maybe we can move Bottom navigation bar here-->
 </layout>

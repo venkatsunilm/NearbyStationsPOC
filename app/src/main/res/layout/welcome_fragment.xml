@@ -107,7 +107,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/terms_sign_in" />
 
-                    <!--TODO: Add image view in Linear layout-->
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/terms_secure_sign_in_text"
                         android:layout_width="wrap_content"
@@ -120,7 +119,6 @@
                         app:layout_constraintStart_toStartOf="@+id/secure_sign_in_button"
                         app:layout_constraintTop_toBottomOf="@+id/secure_sign_in_button" />
 
-                    <!--TODO: Add image view in Linear layout-->
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/other_Sign_text"
                         android:layout_width="0dp"
