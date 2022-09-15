@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.virta.nearbyservices.data.NetworkResult
-import com.virta.nearbyservices.data.RepositoryManager
+import com.virta.nearbyservices.domain.RepositoryManager
 import com.virta.nearbystations.ui.login.LoginResultStatus
 import com.virta.nearbystations.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

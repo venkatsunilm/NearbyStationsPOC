@@ -1,8 +1,8 @@
-package com.virta.nearbyservices.data.model
+package com.virta.nearbyservices.data.repository.login
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDetailsModel(
+data class UserDetailsDto(
     @SerializedName("email")
     val userName: String = "",
     @SerializedName("code")

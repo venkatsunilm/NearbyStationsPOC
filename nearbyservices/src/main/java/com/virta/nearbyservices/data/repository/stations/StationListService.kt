@@ -1,6 +1,5 @@
 package com.virta.nearbyservices.data.repository.stations
 
-import com.virta.nearbyservices.data.model.StationModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -11,5 +10,5 @@ interface StationListService {
     suspend fun getStations(
         @Header("Authorization") token: String,
         @QueryMap options: Map<String, Double>
-    ): Response<List<StationModel>>
+    ): Response<List<StationDto>>
 }

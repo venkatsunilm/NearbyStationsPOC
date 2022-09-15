@@ -3,7 +3,6 @@ package com.virta.nearbyservices.data.repository.login
 import com.google.gson.JsonObject
 import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.helper.RetrofitClient
-import com.virta.nearbyservices.data.model.UserDetailsModel
 import com.virta.nearbyservices.data.repository.BaseService
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,8 +17,11 @@ class LoginDataSource @Inject constructor() : BaseService() {
         userName: String,
         password: String
     ): NetworkResult<JsonObject> {
-        val userDetailsModel = UserDetailsModel(userName, password)
-        return apiCall { loginService.login(body = userDetailsModel) }
+        val userDetailsDto = UserDetailsDto(
+            userName,
+            password
+        )
+        return apiCall { loginService.login(body = userDetailsDto) }
     }
 
     fun logout() {

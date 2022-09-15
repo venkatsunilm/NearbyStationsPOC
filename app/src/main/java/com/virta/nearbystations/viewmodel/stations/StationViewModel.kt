@@ -1,9 +1,9 @@
 package com.virta.nearbystations.viewmodel.stations
 
 import androidx.lifecycle.ViewModel
-import com.virta.nearbyservices.data.model.StationModel
+import com.virta.nearbyservices.data.repository.stations.StationDto
 
-class StationViewModel(item: StationModel) : ViewModel() {
+class StationViewModel(item: StationDto) : ViewModel() {
     val locationName = item.name
     val distance = item.distance.toString()
     val address = item.city
