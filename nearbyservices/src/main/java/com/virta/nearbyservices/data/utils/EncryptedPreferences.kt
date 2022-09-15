@@ -10,7 +10,7 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
 // TODO: use Hilt for context once implemented
-class EncryptedPreferences(private val applicationContext: Context) {
+internal class EncryptedPreferences(private val applicationContext: Context) {
     private val sharedPreferencesName = "com.fsecure.mycolorapp"
     private val sharedPreferenceObject = EncryptedSharedPreferences.create(
         applicationContext,

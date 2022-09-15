@@ -41,14 +41,12 @@ class StationListFragment : Fragment() {
         }
         stationListViewModel.stationList.observe(viewLifecycleOwner)
         {
-//            lifecycleScope.launch {
             if (it.success) {
                 binding.stationList.adapter = StationsAdapter(it.stationList)
                 Toast.makeText(context, "List displayed", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, it.errorMessage, Toast.LENGTH_LONG).show()
             }
-//            }
         }
 
         return binding.root

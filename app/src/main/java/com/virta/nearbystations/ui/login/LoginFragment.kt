@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.virta.nearbystations.R
 import com.virta.nearbystations.databinding.LoginFragmentBinding
+import com.virta.nearbystations.viewmodel.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

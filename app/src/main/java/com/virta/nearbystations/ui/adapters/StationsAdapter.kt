@@ -3,12 +3,12 @@ package com.virta.nearbystations.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.virta.nearbyservices.data.model.StationModel
+import com.virta.nearbyservices.data.model.StationDto
 import com.virta.nearbystations.databinding.StationFragmentBinding
-import com.virta.nearbystations.ui.stations.StationViewModel
+import com.virta.nearbystations.viewmodel.stations.StationViewModel
 
-class StationsAdapter(
-    private var values: List<StationModel>
+internal class StationsAdapter(
+    private var values: List<StationDto>
 ) : RecyclerView.Adapter<StationsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +32,7 @@ class StationsAdapter(
     inner class ViewHolder(
         private val binding: StationFragmentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun updateBindValues(item: StationModel) {
+        fun updateBindValues(item: StationDto) {
             with(binding) {
                 stationViewModel = StationViewModel(item)
 

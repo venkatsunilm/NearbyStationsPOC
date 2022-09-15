@@ -5,7 +5,7 @@
 package com.virta.nearbyservices.data.repository.login
 
 import com.google.gson.JsonObject
-import com.virta.nearbyservices.data.model.UserCredentials
+import com.virta.nearbyservices.data.model.UserDetailsDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -13,6 +13,6 @@ import retrofit2.http.POST
 interface LoginService {
     @POST("auth")
     suspend fun login(
-        @Body body: UserCredentials
+        @Body body: UserDetailsDto
     ): Response<JsonObject>
 }

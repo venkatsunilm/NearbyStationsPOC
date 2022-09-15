@@ -6,7 +6,7 @@
 
         <variable
             name="stationViewModel"
-            type="com.virta.nearbystations.ui.stations.StationViewModel" />
+            type="com.virta.nearbystations.viewmodel.stations.StationViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

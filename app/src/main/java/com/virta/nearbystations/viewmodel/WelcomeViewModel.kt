@@ -9,7 +9,5 @@ import javax.inject.Inject
 class WelcomeViewModel @Inject constructor(
     repositoryManager: RepositoryManager
 ) : ViewModel() {
-
     val isUserAuthenticated = repositoryManager.isUserAuthenticated()
-
 }

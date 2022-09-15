@@ -4,7 +4,7 @@ import android.content.Context
 import com.virta.nearbyservices.data.utils.EncryptedPreferences
 import javax.inject.Inject
 
-class EncryptedPreferencesHelper @Inject constructor(private val applicationContext: Context) {
+internal class EncryptedPreferencesHelper @Inject constructor(private val applicationContext: Context) {
 
     fun saveToken(token: String): Boolean {
         return EncryptedPreferences.getInstance(applicationContext)

@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitClient{
+internal class RetrofitClient{
 
     private val BASE_URL = "https://apitest.virta.fi/v4/"
 

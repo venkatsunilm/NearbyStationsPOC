@@ -2,7 +2,7 @@ package com.virta.nearbyservices.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class StationModel(
+data class StationDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("latitude")
