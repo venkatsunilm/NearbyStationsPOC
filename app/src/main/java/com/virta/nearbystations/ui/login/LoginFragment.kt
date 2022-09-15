@@ -38,22 +38,22 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val username = "Test"
-        val password = "password"
-
         loginViewModel.loggedUser.observe(viewLifecycleOwner) {
             if (it.success) {
                 navigateToHome()
                 Toast.makeText(context, "LOGGED IN SUCCESSFULLY!", Toast.LENGTH_SHORT).show()
             } else
-                if(!it.errorMessage.isNullOrEmpty()){
+                if (!it.errorMessage.isNullOrEmpty()) {
                     Toast.makeText(context, it.errorMessage, Toast.LENGTH_SHORT).show()
                 }
         }
 
         // TODO: Login screen partially implemented with mock data
         bindingContext.login.setOnClickListener {
-            loginViewModel.login(username, password)
+            loginViewModel.login(
+                bindingContext.username.text.toString(),
+                bindingContext.password.text.toString()
+            )
         }
     }
 

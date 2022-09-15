@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.RepositoryManager
-import com.virta.nearbyservices.data.model.UserCredentials
 import com.virta.nearbystations.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -1,6 +1,5 @@
 package com.virta.nearbyservices.data.repository.stations
 
-import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.model.StationModel
 import retrofit2.Response
 import retrofit2.http.GET

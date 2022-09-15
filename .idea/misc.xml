@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/activity_nearby.xml" value="0.11096014492753623" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/item_kw.xml" value="0.12907608695652173" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/kw_horizontal_list.xml" value="0.12907608695652173" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/kw_single_unit.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/login_fragment.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/station_fragment.xml" value="0.72" />
         <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/station_list_fragment.xml" value="0.2453125" />
+        <entry key="..\:/Users/VenkatMinchala/AndroidStudioProjects/NearbyStationsPOC/app/src/main/res/layout/welcome_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -1,7 +1,6 @@
 package com.virta.nearbystations.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.virta.nearbyservices.data.NetworkResult
 
 abstract class BaseViewModel : ViewModel() {
 

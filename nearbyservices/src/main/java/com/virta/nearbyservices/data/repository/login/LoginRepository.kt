@@ -1,10 +1,8 @@
 package com.virta.nearbyservices.data.repository.login
 
 import android.content.Context
-import com.google.gson.JsonObject
 import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.helper.EncryptedPreferencesHelper
-import com.virta.nearbyservices.data.model.LoggedInUser
 import com.virta.nearbyservices.data.utils.TOKEN_KEY
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
