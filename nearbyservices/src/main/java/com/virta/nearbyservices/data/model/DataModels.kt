@@ -15,7 +15,7 @@ data class LoggedInUser(
 // TODO: Delete the credentials
 data class UserCredentials(
     @SerializedName("email")
-    val userName: String = "candidate1@virta.global",
+    val userName: String = "Candidate1@virta.global",
     @SerializedName("code")
     val password: String = "1Candidate!"
 )

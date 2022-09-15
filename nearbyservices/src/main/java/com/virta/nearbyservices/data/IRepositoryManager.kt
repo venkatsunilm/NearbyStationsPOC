@@ -4,8 +4,8 @@ import com.virta.nearbyservices.data.model.StationModel
 
 interface IRepositoryManager {
 
-    suspend fun login(username: String, password: String): Boolean
+    suspend fun login(username: String, password: String): NetworkResult<Boolean>
 
-    suspend fun getStations(params: Map<String, Double>): List<StationModel>
+    suspend fun getStationList(params: Map<String, Double>): NetworkResult<List<StationModel>>
 
 }

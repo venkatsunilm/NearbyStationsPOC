@@ -11,8 +11,9 @@ class EncryptedPreferencesHelper @Inject constructor(private val applicationCont
             .putString(EncryptedPreferences.Keys.TOKEN.name, token)
     }
 
-    fun isAuthenticated() {
-        // TODO: Check if the token is still valid
+    fun isAuthenticated(): Boolean {
+        return EncryptedPreferences.getInstance(applicationContext)
+            .getString(EncryptedPreferences.Keys.TOKEN).isNotEmpty()
 
     }
 

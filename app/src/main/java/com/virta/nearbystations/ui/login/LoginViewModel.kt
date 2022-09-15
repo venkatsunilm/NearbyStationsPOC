@@ -2,11 +2,11 @@ package com.virta.nearbystations.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.RepositoryManager
-import com.virta.nearbyservices.data.ResponseError
 import com.virta.nearbyservices.data.model.UserCredentials
+import com.virta.nearbystations.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,33 +14,39 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val repositoryManager: RepositoryManager
-) : ViewModel() {
+) : BaseViewModel() {
 
-    private val _loginForm = MutableLiveData<LoginFormState>()
-    val loginFormState: LiveData<LoginFormState> = _loginForm
-
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
-
-    private val _spinner = MutableLiveData<Boolean>(false)
+    private val _spinner = MutableLiveData(false)
     val spinner: LiveData<Boolean>
         get() = _spinner
 
-    private var _loggedUser = MutableLiveData<Boolean>()
-    val loggedUser: LiveData<Boolean>
-        get() = _loggedUser
+    private var _loggedUserStatus = MutableLiveData<LoginResultStatus>()
+    val loggedUser: LiveData<LoginResultStatus>
+        get() = _loggedUserStatus
 
+    // TODO: Instead of Network result we can return UI custom data model from Repository
     fun login(username: String, password: String) {
         viewModelScope.launch {
-            try {
-                // TODO: Remove the below line, its for mock testing
-                val userCred = UserCredentials()
-                val result = repositoryManager.login(userCred.userName, userCred.password)
-                _loggedUser.value = result
-            } catch (e: ResponseError) {
-                _loggedUser.value = false
+            // TODO: Remove the below line, its for mock testing
+            _spinner.value = true
+            val userCred = UserCredentials()
+            safeCall {
+                when (val result = repositoryManager.login(userCred.userName, userCred.password)) {
+                    is NetworkResult.Success -> {
+                        _loggedUserStatus.value = LoginResultStatus(result.data)
+                    }
+                    is NetworkResult.Error -> {
+                        _loggedUserStatus.value =
+                            LoginResultStatus(errorMessage = result.exception.toString())
+                    }
+                }
             }
+            _spinner.value = false
         }
+    }
+
+    fun isAuthenticated() {
+        repositoryManager.isUserAuthenticated()
     }
 
 //    fun loginDataChanged(username: String, password: String) {
