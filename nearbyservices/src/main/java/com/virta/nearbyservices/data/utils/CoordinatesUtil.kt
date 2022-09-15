@@ -3,7 +3,7 @@ package com.virta.nearbyservices.data.utils
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.virta.nearbyservices.data.model.StationDto
+import com.virta.nearbyservices.data.model.StationModel
 import java.io.IOException
 import java.text.DecimalFormat
 import kotlin.math.*
@@ -16,9 +16,9 @@ internal object CoordinatesUtil {
     internal fun getSortedResultByDistance(
         currentLatitude: Double,
         currentLongitude: Double,
-        stationsResponse: List<StationDto>,
+        stationsResponse: List<StationModel>,
         context: Context
-    ): List<StationDto> {
+    ): List<StationModel> {
         // Additional information: As the API service is not giving responses as part of known issue,
         // i am using mock data here
         return stationsResponse.ifEmpty {
@@ -86,10 +86,10 @@ internal object CoordinatesUtil {
     }
 
     // TODO: Read the mock Json from raw folder
-    private fun parseJsonToMockData(context: Context): List<StationDto> {
+    private fun parseJsonToMockData(context: Context): List<StationModel> {
         val jsonString = getJsonDataFromAsset(context)
         val gson = Gson()
-        val stationListType = object : TypeToken<List<StationDto>>() {}.type
+        val stationListType = object : TypeToken<List<StationModel>>() {}.type
         return gson.fromJson(jsonString, stationListType)
     }
 

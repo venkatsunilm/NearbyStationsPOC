@@ -3,7 +3,7 @@ package com.virta.nearbyservices.data.repository.stations
 import android.content.Context
 import com.virta.nearbyservices.data.NetworkResult
 import com.virta.nearbyservices.data.helper.RetrofitClient
-import com.virta.nearbyservices.data.model.StationDto
+import com.virta.nearbyservices.data.model.StationModel
 import com.virta.nearbyservices.data.repository.BaseService
 import com.virta.nearbyservices.data.utils.CoordinatesUtil
 import com.virta.nearbyservices.data.utils.EncryptedPreferences
@@ -22,7 +22,7 @@ class StationListDataSource @Inject constructor(
         EncryptedPreferences.getInstance(context)
     private val count = AtomicInteger(0)
 
-    suspend fun getStationList(params: Map<String, Double>): NetworkResult<List<StationDto>> {
+    suspend fun getStationList(params: Map<String, Double>): NetworkResult<List<StationModel>> {
         val currentLatitude = params.getValue(LATITUDE_KEY)
         val currentLongitude = params.getValue(LONGITUDE_KEY)
 

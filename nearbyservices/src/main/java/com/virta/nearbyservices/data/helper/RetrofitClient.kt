@@ -8,15 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 internal class RetrofitClient{
 
-    private val BASE_URL = "https://apitest.virta.fi/v4/"
-
     private fun getRetrofit(): Retrofit {
         val gson = GsonBuilder()
             .setLenient()
             .create()
 
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://apitest.virta.fi/v4/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(getHttpClient())
             .build()
